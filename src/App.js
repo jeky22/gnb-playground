@@ -1,11 +1,13 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import { contents } from "./data/contents";
+import { lnbData } from "./data/lnbData";
+import { gnbData } from "./data/gnbData";
 import { MdSearch } from "react-icons/md";
 import { VscBell } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
+import { useState } from "react";
 
-function List(list, isBold = 1) {
+function LnbList(list, isBold = 1) {
   return list.map((item, index) =>
     isBold === 1 || isBold === index ? (
       <li className="bolder" key={index}>
@@ -16,25 +18,28 @@ function List(list, isBold = 1) {
     )
   );
 }
+function gnbList(list, func, index) {
+  return <li onMouseEnter={func(index)}>{list}</li>;
+}
 
 function App() {
-  const data = contents;
-  const lastIndex = contents.length - 1;
+  const lnblastIndex = lnbData.length - 1;
+  const [collapse, setCollapse] = useState(-1);
+  // const [collapse, setCollapse] = useState(-1);
+
+  function handleHover(obj) {
+    console.dir(obj);
+    setCollapse(obj);
+  }
 
   return (
-    <div>
+    <div onMouseLeave={handleHover}>
       <div className="container" id="gnb">
         <div className="image-container">
           <img src="/img/wanted-logo.png" alt="logo" />
         </div>
         <ul>
-          <li>탐색</li>
-          <li>커리어 성장</li>
-          <li>직군별 연봉</li>
-          <li>이력서</li>
-          <li>매치업</li>
-          <li>프리랜서</li>
-          <li>Ai 합격예측</li>
+          {gnbData.map((item, index) => gnbList(item, handleHover, index))}
         </ul>
         <aside>
           <div>
@@ -50,12 +55,15 @@ function App() {
           <div className="btn">기업서비스</div>
         </aside>
       </div>
-      <div className="partition-horizontal"></div>
-      <div className="container" id="lnb">
-        {data.map((item, index) => (
-          <ul key={index}>{List(item, index === lastIndex ? 1 : 0)}</ul>
+      <div
+        className={collapse === 0 ? "container show" : "container "}
+        id="lnb"
+      >
+        {lnbData.map((item, index) => (
+          <ul key={index}>{LnbList(item, index === lnblastIndex ? 1 : 0)}</ul>
         ))}
       </div>
+      <div className="partition-horizontal"></div>
       <div></div>
     </div>
   );

@@ -1,4 +1,4 @@
-export const contents = [
+export const lnbData = [
   [
     "영업",
     "기업영업",

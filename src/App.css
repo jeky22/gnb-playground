@@ -2,6 +2,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: -apple-system, Helvetica, Arial, "hiragino kaku gothic pro",
+    meiryo, "Microsoft YaHei", "ms pgothic", "Apple SD Gothic Neo",
+    "Nanum Gothic", "Malgun Gothic", sans-serif;
 }
 nav {
   position: fixed;
@@ -110,6 +113,48 @@ section {
   border-bottom: 1px solid #e1e2e3;
 }
 
+/* aside action */
+/* menu-dropbox */
+#active-container {
+  position: fixed;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  top: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+#active-container.show {
+  max-height: 2000px;
+  transition: all 1s;
+  opacity: 1;
+  z-index: 200;
+}
+#active-container .image-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+#active-container .image-container > svg {
+  cursor: pointer;
+}
+#active-container .image-container > img {
+  width: 100px;
+}
+#active-container li {
+  cursor: pointer;
+  list-style: none;
+  padding: 15px 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+}
+#active-container li:nth-child(3),
+#active-container li:nth-child(8),
+#active-container li:nth-child(10) {
+  border-top: 1px solid #eee;
+}
+
 /* lnbnav */
 #lnb {
   display: flex;
@@ -117,13 +162,10 @@ section {
   max-height: 0;
   opacity: 0;
 }
-#lnb::before {
-  content: "";
-  border-top: 1px solid #e1e2e3;
-}
+
 #lnb > ul {
   flex: 1;
-  padding: 40px 20px 0 0;
+  padding: 40px 20px 40px 0;
 }
 
 #lnb li {
@@ -165,11 +207,11 @@ section {
     display: none;
   }
 
-  #lnb.show {
+  .show {
     max-height: 100vh;
     transition: all 1s;
     opacity: 1;
-    z-index: 100;
+    z-index: 200;
   }
   #dim {
     background-color: #fff;

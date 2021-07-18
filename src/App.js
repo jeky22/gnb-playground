@@ -2,8 +2,9 @@
 import "./App.css";
 import { lnbData } from "./data/lnbData";
 import { gnbData } from "./data/gnbData";
+import { dropboxData } from "./data/dropboxData";
 import { MdSearch } from "react-icons/md";
-import { VscBell, VscMenu } from "react-icons/vsc";
+import { VscBell, VscMenu, VscChromeClose } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { useState } from "react";
 
@@ -28,6 +29,7 @@ function App() {
   const lnblastIndex = lnbData.length - 1;
   const [hover, setHover] = useState(-1);
   const [clicked, setClicked] = useState(-1);
+  const [dropbox, setDropbox] = useState(false);
 
   function handleGnbHover(param) {
     setHover(param);
@@ -64,7 +66,7 @@ function App() {
             <div className="new-badge">
               <VscBell size={22} />
             </div>
-            <div>
+            <div id="menu-icon" onClick={() => setDropbox(true)}>
               <VscMenu size={22} />
             </div>
             <div className="new-badge">
@@ -74,6 +76,7 @@ function App() {
             <div className="btn">기업서비스</div>
           </aside>
         </div>
+
         <div className={hover === 1 ? "container show" : "container "} id="lnb">
           {/* <div className="container show" id="lnb"> */}
           {lnbData.map((item, index) => (
@@ -83,6 +86,17 @@ function App() {
         <div className="partition-horizontal"></div>
         <div></div>
       </nav>
+      <div id="active-container" className={dropbox ? "show" : ""}>
+        <div className="image-container ">
+          <img src="/img/wanted-logo.png" alt="logo" />
+          <VscChromeClose size={22} onClick={() => setDropbox(false)} />
+        </div>
+        <ul>
+          {dropboxData.map((item, index) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
       <div className={hover === 1 ? "show" : ""} id="dim"></div>
       <section>
         <h2>본문</h2>

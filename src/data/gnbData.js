@@ -1,4 +1,5 @@
 export const gnbData = [
+  "홈",
   "탐색",
   "커리어 성장",
   "직군별 연봉",

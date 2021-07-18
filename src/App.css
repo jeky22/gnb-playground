@@ -24,21 +24,31 @@
 /* gnbNav-logo */
 .image-container > img {
   width: 100%;
+  cursor: pointer;
 }
 
 #gnb > ul {
   display: flex;
-  justify-content: space-evenly;
+  padding: 0 10px;
 }
 
 /*gnbNav-menu*/
 #gnb li {
+  cursor: pointer;
+  flex: 1 1 auto;
   text-align: center;
   padding: 15px 0;
   list-style: none;
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
+}
+
+#gnb li.hover {
+  box-shadow: inset 0 -2px #ddd;
+}
+#gnb li.clicked {
+  box-shadow: inset 0 -2px #258bf7;
 }
 
 /* gnbNav-aside */
@@ -50,11 +60,13 @@
 }
 #gnb > aside > div {
   /* flex: 1; */
+  cursor: pointer;
   text-align: center;
 }
 
 #gnb > aside > .partition-vertical {
   /* width: 1px; */
+  cursor: unset;
   border-left: 1px solid #e1e2e3;
   height: 30%;
 }
@@ -77,18 +89,13 @@
 #lnb {
   display: flex;
   position: relative;
-  max-height: 0;
   overflow: hidden;
-  /* opacity: 0; */
-  /* transition-duration: 0.5s; */
+  max-height: 0;
   -webkit-transition: max-height 1s;
-
   transition: max-height 1s;
 }
 #lnb.show {
-  /* overflow: unset; */
-  max-height: 500px;
-  /* opacity: 1; */
+  max-height: 600px;
 }
 #lnb::before {
   content: "";
@@ -101,6 +108,7 @@
 }
 
 #lnb li {
+  cursor: pointer;
   position: relative;
   list-style: none;
   font-size: 13px;
@@ -117,6 +125,14 @@
   overflow: hidden;
 }
 .bolder::after {
+  color: #999;
+  font-size: small;
+  font-weight: 700;
+  content: ">";
+  position: absolute;
+  right: 0;
+}
+.more::after {
   color: #999;
   font-size: small;
   font-weight: 700;

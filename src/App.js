@@ -61,13 +61,13 @@ function App() {
             <div>
               <MdSearch size={22} />
             </div>
-            <div>
+            <div className="new-badge">
               <VscBell size={22} />
             </div>
             <div>
               <VscMenu size={22} />
             </div>
-            <div>
+            <div className="new-badge">
               <CgProfile size={22} />
             </div>
             <div className="partition-vertical"></div>

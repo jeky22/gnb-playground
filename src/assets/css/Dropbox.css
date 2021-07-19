@@ -1,0 +1,41 @@
+/* aside action */
+/* menu-dropbox */
+#active-container {
+  position: fixed;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  top: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+#active-container.show {
+  max-height: 2000px;
+  transition: all 1s;
+  opacity: 1;
+  z-index: 200;
+}
+#active-container .image-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+#active-container .image-container > svg {
+  cursor: pointer;
+}
+#active-container .image-container > img {
+  width: 100px;
+}
+#active-container li {
+  cursor: pointer;
+  list-style: none;
+  padding: 15px 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+}
+#active-container li:nth-child(3),
+#active-container li:nth-child(8),
+#active-container li:nth-child(10) {
+  border-top: 1px solid #eee;
+}

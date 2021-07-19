@@ -1,0 +1,55 @@
+/* lnbnav */
+#lnb {
+  display: flex;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
+#lnb > ul {
+  flex: 1;
+  padding: 40px 20px 40px 0;
+}
+
+#lnb li {
+  cursor: pointer;
+  position: relative;
+  list-style: none;
+  font-size: 13px;
+  color: #999;
+  padding: 5px 20px 5px 0;
+  /* width: 100%; */
+}
+
+#lnb ul .bolder {
+  font-size: 17px;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.bolder::after {
+  color: #999;
+  font-size: small;
+  font-weight: 700;
+  content: ">";
+  position: absolute;
+  right: 0;
+}
+.more::after {
+  color: #999;
+  font-size: small;
+  font-weight: 700;
+  content: ">";
+  position: absolute;
+  right: 0;
+}
+
+@media (min-width: 768px) {
+  #lnb.show {
+    max-height: 100vh;
+    transition: all 1s;
+    opacity: 1;
+    z-index: 200;
+  }
+}
